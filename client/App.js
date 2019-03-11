@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../styles.css";
+//import "../styles.css";
 require("@babel/polyfill");
 
 class App extends Component {
@@ -19,8 +19,9 @@ class App extends Component {
   }
 
   async callBackendAPI() {
-    const response = await fetch('/api/contacts');
-    const body = await response.json();
+    const response = await fetch('/sampleData');
+    //const response = await fetch('/api/contacts');
+    const body = response; // await response.json();
 
     if(response.status !== 200) {
       throw Error(body.message)
@@ -28,7 +29,7 @@ class App extends Component {
     return body;
   }
   */
-  
+ 
   render() {
     let data = this.state.data || 'there is no data';
 
@@ -37,7 +38,6 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        // Render the newly fetched data inside of this.state.data 
         <p className="App-intro">{data}</p>
       </div>
     );
