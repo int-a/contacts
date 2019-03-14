@@ -11,25 +11,22 @@ class App extends Component {
     };
   }
 
-  /*
   componentDidMount() {
     this.callBackendAPI()
-      .then(res => this.setState({ data: res.data }))
+      .then(res => this.setState({ data: res }))
       .catch(err => console.log(err));
   }
 
   async callBackendAPI() {
     const response = await fetch('/sampleData');
-    //const response = await fetch('/api/contacts');
-    const body = response; // await response.json();
+    const body = await response.text();
 
     if(response.status !== 200) {
-      throw Error(body.message)
+      throw Error(body)
     }
     return body;
   }
-  */
- 
+
   render() {
     let data = this.state.data || 'there is no data';
 
