@@ -4,7 +4,7 @@
   "description": "A simple contacts app written using React, Node, and Mongo",
   "main": "index.js",
   "scripts": {
-    "start": "node server/server.js",
+    "start": "npx webpack --mode=development && node server/server.js",
     "old_start": "webpack-dev-server --config ./webpack.config.js --mode development",
     "build": "npx webpack --mode=development",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,7 +18,9 @@
     ]
   },
   "dependencies": {
+    "dotenv": "^7.0.0",
     "express": "^4.16.4",
+    "mongoose": "^5.4.19",
     "react": "^16.8.4",
     "react-dom": "^16.8.4"
   },

@@ -1,19 +1,44 @@
-var express = require('express');
-var app = express();
-var path = require('path');
+require('dotenv').config();
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const routes = require('./routes/api');
+const path = require('path');
+
+const app = express();
+
+const port = process.env.PORT || 5000;
+
+//connect to the database
+mongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true })
+  .then(() => console.log(`Database connected successfully`))
+  .catch(err => console.log(err));
+
+// overide mongoose promise (depricated) with node's promise
+mongoose.Promise = global.Promise;
+
+app.use((req, res, next) => {
+  // TODO: should we set header on res or req?
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+app.use(bodyParser.json());
+
+app.use('/api', routes);
+
+app.use((err, req, res, next) => {
+  console.log(err);
+  next();
+});
 
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname + '/../index.html'));
 });
 
-app.get('/sampleData', function(req, res) {
-  res.send('sanple data');
+app.use('/../dist', express.static('dist'));
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`)
 });
-
-app.use('/dist', express.static('dist'));
-
-app.get('/style', function(req, res) {
-  res.sendFile(path.join(__dirname + '/styles.css'));
-})
-
-app.listen(8080);

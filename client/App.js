@@ -18,11 +18,12 @@ class App extends Component {
   }
 
   async callBackendAPI() {
-    const response = await fetch('/sampleData');
-    const body = await response.text();
+    const response = await fetch('/api/contacts');
+    const body = await response.json();
 
     if(response.status !== 200) {
-      throw Error(body)
+      //test this explicitly, have endpoint return error code
+      throw Error(body.error)
     }
     return body;
   }
