@@ -30,6 +30,7 @@ class App extends Component {
 
   render() {
     let data = this.state.data || 'there is no data';
+    data = data[0].number;
 
     return (
       <div className="App">
