@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import ContactDetail from './ContactDetail';
+import ContactList from './ContactList';
+import AddContactModal from './AddContactModal';
 //import "../styles.css";
 require("@babel/polyfill");
 
@@ -29,15 +32,11 @@ class App extends Component {
   }
 
   render() {
-    let data = this.state.data || 'there is no data';
-    data = data[0].number;
-
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">{data}</p>
+      <div>
+        <ContactList />
+        <ContactDetail />
+        <AddContactModal />
       </div>
     );
   }
