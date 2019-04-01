@@ -12,21 +12,26 @@ export default class App extends Component {
     };
   }
 
-  componentDidMount() {
-    this.callBackendAPI()
-      .then(res => this.setState({ data: res }))
-      .catch(err => console.log(err));
-  }
+  // componentDidMount() {
+  //   this.callBackendAPI()
+  //     .then(res => this.setState({ data: res }))
+  //     .catch(err => console.log(err));
+  // }
 
-  callBackendAPI() {
-    
+  // callBackendAPI() {
+  componentDidMount() { 
+    // TODO: pull this code out and into its own api or server file
+    // probably just return the result of fetch (a promise) and deal
+    // with it asyncronously here
+
     fetch('/api/contacts').then((data) => {
       console.log(data);
       return data.json();
     }).then((body) => {
+      console.log("logging body");
       console.log(body);
       this.setState({data: body})
-    });
+    }).catch(err => console.log(err));
 
     //const body = await response.json();
 
