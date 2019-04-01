@@ -9,13 +9,15 @@ export default function (state = { contacts : [] }, action) {
       console.log(state);
       return state.concat([
         {
-          name: action.payload.name,
+          _id: action.payload._id,
+          firstName: action.payload.firstName,
+          lastName: action.payload.lastName,
           phone: action.payload.phone
         }
     ])
     case 'REMOVE_CONTACT':
       let returnVal = state.filter(function(value, index, arr){
-        return (value.name !== action.payload.name && value.phone !== action.payload.phone);
+        return (value.firstName !== action.payload.firstName && value.lastName !== action.payload.lastName && value.phone !== action.payload.phone);
       });
       return returnVal;
     default:

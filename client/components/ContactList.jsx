@@ -10,7 +10,7 @@ class ContactList extends Component {
         <li
           key={contact.phone}
           onClick={() => this.props.selectContact(contact)}
-          className='list-group-item'>{contact.name}</li>
+          className='list-group-item'>{contact.firstName}</li>
       );
     });
   }
