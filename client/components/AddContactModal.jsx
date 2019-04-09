@@ -21,14 +21,15 @@ class AddContactModal extends Component {
   }
 
   addContact() {
-    this.props.addContact({"name": this.state.firstName, "phone": this.state.phone});
+    this.props.addContact({"firstName": this.state.firstName, "lastName": this.state.lastName, "phone": this.state.phone});
   }
 
   render() {
 
     return(
       <div>
-        <input type="text" className="name" placeholder="Contact Name" onChange={(event) => this.handleNameChange(event)}/>
+        <input type="text" className="firstName" placeholder="First Name" onChange={(event) => this.handleNameChange(event)}/>
+        <input type="text" className="lastName" placeholder="Last Name" onChange={(event) => this.handleNameChange(event)}/>
         <input type="text" className="phone" placeholder="Contact Phone" onChange={(event) => this.handlePhoneChange(event)}/>
         <AddContactButton onClick={() => this.addContact()}/>
       </div>

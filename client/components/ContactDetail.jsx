@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux'
 class ContactDetail extends Component {
 
   removeContact() {
-    this.props.removeContact({"name": this.props.contact.name, "phone": this.props.contact.phone});
+    this.props.removeContact({"firstName": this.props.contact.firstName, "lastName": this.props.contact.lastName, "phone": this.props.contact.phone});
   }
 
   render() {
