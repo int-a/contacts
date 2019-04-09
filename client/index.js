@@ -29,20 +29,29 @@ import { getContacts } from './server/api';
 //   "activeContact": null
 // };
 
-const initialState = getContacts()
+getContacts()
   .then((body) => {
+    body = {
+      "contacts": body,
+      "activeContact": null
+    };
     console.log('body: ');
     console.log(body);
-    return body;
+    
+    const composeEnhancers = composeWithDevTools({});
+    ReactDOM.render(
+      <Provider store={ createStore(reducers, body, composeEnhancers(
+      )) }>
+      <App />
+      </Provider>
+    , document.querySelector('.container'));
   }).catch(err => console.log(err));
 
-console.log('initial state: ');
-console.log(initialState);
 
-const composeEnhancers = composeWithDevTools({});
-ReactDOM.render(
-  <Provider store={ createStore(reducers, initialState, composeEnhancers(
-  )) }>
-   <App />
-  </Provider>
-, document.querySelector('.container'));
+// const composeEnhancers = composeWithDevTools({});
+// ReactDOM.render(
+//   <Provider store={ createStore(reducers, initialState, composeEnhancers(
+//   )) }>
+//    <App />
+//   </Provider>
+// , document.querySelector('.container'));

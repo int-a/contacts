@@ -1,8 +1,11 @@
 export function getContacts() {
-  let data = fetch('/api/contacts').then((data) => {
-    console.log(data);
-    return data.json();
+  let response = fetch('/api/contacts').then((response) => {
+    if(!response.ok) {
+      throw new Error("Error getting data from DB");
+    }
+    console.log(response);
+    return response.json();
   }).catch(err => console.log(err));
 
-  return data;
+  return response;
 }
