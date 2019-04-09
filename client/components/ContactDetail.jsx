@@ -18,7 +18,7 @@ class ContactDetail extends Component {
     } 
     return (
       <div>
-        <h3>Contact Details for: { this.props.contact.name }</h3>
+        <h3>Contact Details for: { this.props.contact.firstName } { this.props.contact.lastName }</h3>
         <div>Phone: { this.props.contact.phone }</div>
         <RemoveContactButton onClick={() => this.removeContact()}/>
       </div>

@@ -12,8 +12,12 @@ class AddContactModal extends Component {
     //const { dispatch } = props;
   }
 
-  handleNameChange(event) {
+  handleFirstNameChange(event) {
     this.setState({firstName: event.target.value})
+  }
+
+  handleLastNameChange(event) {
+    this.setState({lastName: event.target.value})
   }
   
   handlePhoneChange(event) {
@@ -28,8 +32,8 @@ class AddContactModal extends Component {
 
     return(
       <div>
-        <input type="text" className="firstName" placeholder="First Name" onChange={(event) => this.handleNameChange(event)}/>
-        <input type="text" className="lastName" placeholder="Last Name" onChange={(event) => this.handleNameChange(event)}/>
+        <input type="text" className="firstName" placeholder="First Name" onChange={(event) => this.handleFirstNameChange(event)}/>
+        <input type="text" className="lastName" placeholder="Last Name" onChange={(event) => this.handleLastNameChange(event)}/>
         <input type="text" className="phone" placeholder="Contact Phone" onChange={(event) => this.handlePhoneChange(event)}/>
         <AddContactButton onClick={() => this.addContact()}/>
       </div>
