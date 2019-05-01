@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import selectContact from '../actions/action_select_contact'
 import { bindActionCreators } from 'redux'
+import '../styles.css';
 
 class ContactList extends Component {
   renderList() {
